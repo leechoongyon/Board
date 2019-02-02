@@ -1,14 +1,10 @@
 package org.simple.domain;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageMaker
 {
-	private static final Logger logger = LoggerFactory.getLogger(PageMaker.class);
-	
 	private int totalCount;
 	private int startPage;
 	private int endPage;
@@ -89,11 +85,20 @@ public class PageMaker
 	public String makeQuery(int page)
 	{
 
-		UriComponents uriComponents = UriComponentsBuilder.newInstance()
-				.queryParam("page", page)
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum()).build();
+
+		return uriComponents.toUriString();
+	}
+
+	public String makeSearch(int page)
+	{
+
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
 				.queryParam("perPageNum", cri.getPerPageNum())
-				.build();
-		logger.debug("uri : {}", uriComponents.toUriString());
+				.queryParam("searchType", ((SearchCriteria) cri).getSearchType())
+				.queryParam("keyword", ((SearchCriteria) cri).getKeyword()).build();
+
 		return uriComponents.toUriString();
 	}
 }

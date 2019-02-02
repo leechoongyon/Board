@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.simple.domain.BoardVO;
 import org.simple.domain.Criteria;
+import org.simple.domain.SearchCriteria;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -14,9 +15,9 @@ public class BoardDAOImpl implements BoardDAO
 {
 	@Inject
 	private SqlSession session;
-	
+
 	private static String namespace = "org.simple.mapper.BoardMapper";
-	
+
 	@Override
 	public void create(BoardVO vo) throws Exception
 	{
@@ -44,29 +45,49 @@ public class BoardDAOImpl implements BoardDAO
 	@Override
 	public List<BoardVO> listAll() throws Exception
 	{
-		return session.selectList(namespace +".listAll");
+		return session.selectList(namespace + ".listAll");
 	}
 
 	@Override
-	public List<BoardVO> listPage(int page) throws Exception 
+	public List<BoardVO> listPage(int page) throws Exception
 	{
-		if (page <= 0) 
-			page =1;
-		
+
+		if (page <= 0)
+		{
+			page = 1;
+		}
+
 		page = (page - 1) * 10;
+
 		return session.selectList(namespace + ".listPage", page);
 	}
 
 	@Override
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception
 	{
-		return session.selectList(namespace + ".listCriteria", cri); 
+
+		return session.selectList(namespace + ".listCriteria", cri);
 	}
 
 	@Override
 	public int countPaging(Criteria cri) throws Exception
 	{
-		return session.selectOne(namespace+".countPaging", cri);
+
+		return session.selectOne(namespace + ".countPaging", cri);
+	}
+
+	@Override
+	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception
+	{
+
+		return session.selectList(namespace + ".listSearch", cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception
+	{
+
+		return session.selectOne(namespace + ".listSearchCount", cri);
 	}
 
 }
