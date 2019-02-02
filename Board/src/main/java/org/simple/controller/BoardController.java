@@ -49,7 +49,7 @@ public class BoardController
 								@ModelAttribute("cri") Criteria cri,
 								Model model) throws Exception
 	{
-		model.addAttribute(service.read(bno));
+		model.addAttribute(service.read(bno)); 
 	}
 	
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
