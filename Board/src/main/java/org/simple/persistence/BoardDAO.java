@@ -2,6 +2,7 @@ package org.simple.persistence;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.simple.domain.BoardVO;
 import org.simple.domain.Criteria;
 import org.simple.domain.SearchCriteria;
@@ -30,7 +31,7 @@ public interface BoardDAO
 
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 
-	public void updateReplyCnt(Integer bno, int amount) throws Exception;
+	public void updateReplyCnt(@Param("bno") Integer bno, @Param("amount") int amount) throws Exception;
 
 	public void updateViewCnt(Integer bno) throws Exception;
 
