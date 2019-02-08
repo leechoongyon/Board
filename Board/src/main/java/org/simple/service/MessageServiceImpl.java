@@ -6,6 +6,7 @@ import org.simple.domain.MessageVO;
 import org.simple.persistence.MessageDAO;
 import org.simple.persistence.PointDAO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MessageServiceImpl implements MessageService
@@ -16,7 +17,7 @@ public class MessageServiceImpl implements MessageService
 	@Inject
 	private PointDAO pointDAO;
 
-	// @Transactional
+	@Transactional
 	@Override
 	public void addMessage(MessageVO vo) throws Exception
 	{

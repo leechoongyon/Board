@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/sboard/*")
 public class SearchBoardController
 {
-
 	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
 
 	@Inject
