@@ -4,6 +4,8 @@
 - 페이징 기능
 - 댓글 기능 (댓글 페이징 구현)
 - 검색 기능
+- 로그인 기능
+- 권한 기능 (수정, 등록, 삭제 시 로그인 필요)
 ### 환경
 - Springboot (2.1.2)
 - SpringFramework (5.1.4)
@@ -14,7 +16,8 @@
 1. https://github.com/leechoongyon/Board.git 밑에 속한 SimpleBoard 프로젝트 내려받기.
 - maven 필요 
 2. SimpleBoard 프로젝트의 SimpleBoardApplication.java 실행
-3. http://localhost:8080/sboard/list url 접속
+3. http://localhost:8080/user/login url 접속
+- id : user00, pw : user00
 4. 위에 기재된 게시판 기능 수행
 ### 데이터베이스 접근 방법
 1. SimpleBoard 프로젝트의 SimpleBoardApplication.java 실행
