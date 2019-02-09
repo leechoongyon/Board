@@ -60,5 +60,4 @@ public class ReplyServiceImpl implements ReplyService
 	    replyDAO.delete(rno);
 	    boardDAO.updateReplyCnt(bno, -1);
 	}
-
 }

@@ -30,7 +30,6 @@ public class SimpleBoardApplication
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
 		Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*Mapper.xml");
-		logger.info("res size : " + res.length);
 		sessionFactory.setMapperLocations(res);
 		return sessionFactory.getObject();
 	}
