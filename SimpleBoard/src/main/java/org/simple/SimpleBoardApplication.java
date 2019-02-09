@@ -1,5 +1,8 @@
 package org.simple;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -7,18 +10,24 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.simple.interceptor.AuthInterceptor;
+import org.simple.interceptor.LoginInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
 @MapperScan(value={"org.simple.mapper"})
-public class SimpleBoardApplication
+public class SimpleBoardApplication extends WebMvcConfigurerAdapter
 {
 	private static final Logger logger = LogManager.getLogger(SimpleBoardApplication.class);
-	
+
 	public static void main(String[] args)
 	{
 		SpringApplication.run(SimpleBoardApplication.class, args);
