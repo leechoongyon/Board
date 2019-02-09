@@ -34,6 +34,7 @@ public class WebConfig extends WebMvcConfigurerAdapter
 		authPathPatterns.add("/sboard/register");
 		authPathPatterns.add("/sboard/modifyPage");
 		authPathPatterns.add("/sboard/removePage");
+		authPathPatterns.add("/sboard/list");
 		
 		registry.addInterceptor(loginInterceptor)
 				.addPathPatterns("/user/loginPost");
